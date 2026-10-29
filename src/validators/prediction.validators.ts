@@ -14,7 +14,7 @@ export type NotebookType = z.infer<typeof NotebookTypeEnum>;
 export const createPredictionBodySchema = z
   .object({
     /** UUID of a known pen model in the database (optional if enteredBrand + enteredModel given) */
-    penModelId: z.string().min(1).max(100).optional(),
+    penModelId: z.string().uuid("penModelId must be a valid UUID").optional(),
 
     /** Manual brand name (used if penModelId is not provided) */
     enteredBrand: z.string().min(1).max(100).optional(),
