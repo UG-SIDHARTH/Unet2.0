@@ -53,6 +53,12 @@ export const metadata: Metadata = {
       },
     ],
   },
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Mashi Undo Mashe",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -70,6 +76,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
           </QueryProvider>
         </InkModeProvider>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("/sw.js"));`,
+          }}
+        />
       </body>
     </html>
   );
